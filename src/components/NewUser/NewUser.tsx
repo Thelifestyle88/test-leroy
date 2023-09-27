@@ -37,8 +37,11 @@ function NewUser() {
       className={styles.form}
       onSubmit={(e) => {
         e.preventDefault();
+        // отменяем стандартное поведение
         dispatch(addUser({ name, surname, age, email }));
+        // отправляем экшн на добавление нового юзера
         clearField();
+        // Очищаем поля ввода
       }}
       action="submit"
     >
