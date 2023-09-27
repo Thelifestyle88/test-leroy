@@ -1,4 +1,4 @@
-import UserList from '../UserList/Userist';
+import UserList from '../UserList/UserList';
 
 function App() {
   return (

@@ -1,10 +1,3 @@
-export type TUser = {
-  name: string;
-  surname: string;
-  age: number;
-  email: string;
-};
-
 export const usersMock = [
   {
     name: 'Ivan',
@@ -13,32 +6,32 @@ export const usersMock = [
     email: 'ivanov@mail.ru',
   },
   {
-    name: 'Ivan',
-    surname: 'Ivanov',
+    name: 'Petr',
+    surname: 'Petrov',
     age: 30,
     email: 'ivanov@mail.ru',
   },
   {
-    name: 'Ivan',
-    surname: 'Ivanov',
+    name: 'Ilon',
+    surname: 'Mask',
     age: 40,
     email: 'ivanov@mail.ru',
   },
   {
     name: 'Ivan',
-    surname: 'Ivanov',
+    surname: 'Sidorov',
     age: 50,
     email: 'ivanov@mail.ru',
   },
   {
-    name: 'Ivan',
-    surname: 'Ivanov',
+    name: 'Nikolai',
+    surname: 'Nikolaev',
     age: 60,
     email: 'ivanov@mail.ru',
   },
   {
-    name: 'Ivan',
-    surname: 'Ivanov',
+    name: 'Vasiliy',
+    surname: 'Vasiliev',
     age: 70,
     email: 'ivanov@mail.ru',
   },
