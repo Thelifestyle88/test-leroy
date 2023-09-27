@@ -30,6 +30,7 @@ const userSlice = createSlice({
         age: Number(action.payload.age),
         email: action.payload.email,
       });
+      // добавляем нового юзера
     },
     filterUser(state, action) {
       return {
@@ -51,6 +52,7 @@ const userSlice = createSlice({
           if (action.payload.valueMin === '' && action.payload.valueMax === '') {
             return user;
           }
+          // проверяем что нам приходит в action.payload и в зависимости от результат заполняем filteredUsers
         }),
       };
     },

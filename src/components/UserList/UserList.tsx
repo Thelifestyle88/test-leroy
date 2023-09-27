@@ -20,10 +20,10 @@ function UserList() {
   const onChangeMax = (e: React.ChangeEvent<HTMLInputElement>) => {
     setValueMax(e.target.value);
   };
-  // Отправляем экшн в редакс для фильтрации каждый раз при изменении значения в полях Min & Max
   useEffect(() => {
     dispatch(filterUser({ valueMin, valueMax }));
   }, [valueMin, valueMax, dispatch]);
+  // Отправляем экшн в редакс для фильтрации каждый раз при изменении значения в полях Min & Max
   return (
     <section className={styles.userList}>
       <form className={styles.form} action="submit">
@@ -36,6 +36,7 @@ function UserList() {
               max={120}
               value={valueMin}
               onChange={onChangeMin}
+              // запиываем значения min в стейт
               type="number"
               placeholder="min age"
               id="min"
@@ -54,6 +55,7 @@ function UserList() {
               type="number"
               placeholder="max age"
               onChange={onChangeMax}
+              // запиываем значения max в стейт
               name="max"
               id="max"
             />
@@ -63,6 +65,7 @@ function UserList() {
       <button
         className={styles.button}
         onClick={() => (value ? setValue(false) : setValue(true))}
+        // следим за нажатием кнопки добавления пользователя и записываем в стейт
       >
         add new User
       </button>
@@ -84,6 +87,7 @@ function UserList() {
               <tr className={styles.tr} key={index}>
                 <User user={user} />
               </tr>
+              // "отрисовываем" users
             );
           })}
         </tbody>

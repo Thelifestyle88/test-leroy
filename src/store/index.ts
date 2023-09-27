@@ -8,9 +8,11 @@ export type AppDispatch = typeof store.dispatch;
 type DispatchFunc = () => AppDispatch;
 export const useAppDispatch: DispatchFunc = useDispatch;
 export const useAppSelector: TypedUseSelectorHook<RootState> = useSelector;
+// типизируем store и useDispatc и useSelector
 
 export const store = configureStore({
   reducer: {
     userList: userSlice,
   },
 });
+// конфигурируем стор
