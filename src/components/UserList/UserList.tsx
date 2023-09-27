@@ -2,31 +2,28 @@ import { useEffect, useState } from 'react';
 
 import { useAppDispatch, useAppSelector } from '../../store';
 import { filterUser } from '../../store/userSlice';
+import NewUser from '../NewUser/NewUser';
 import User from '../User/User';
 import styles from './styles/style.module.css';
 
 function UserList() {
   const dispatch = useAppDispatch();
-  // const users = useAppSelector((store) => store.userList.users);
   const filteredUsers = useAppSelector((store) => store.userList.filteredUsers);
 
   const [valueMin, setValueMin] = useState('');
   const [valueMax, setValueMax] = useState('');
+  const [value, setValue] = useState(false);
 
   const onChangeMin = (e: React.ChangeEvent<HTMLInputElement>) => {
     setValueMin(e.target.value);
-    dispatch(filterUser({ valueMin, valueMax }));
   };
   const onChangeMax = (e: React.ChangeEvent<HTMLInputElement>) => {
     setValueMax(e.target.value);
-    dispatch(filterUser({ valueMin, valueMax }));
   };
+  // Отправляем экшн в редакс для фильтрации каждый раз при изменении значения в полях Min & Max
   useEffect(() => {
-    if (valueMin || valueMax) {
-      dispatch(filterUser({ valueMin, valueMax }));
-    }
+    dispatch(filterUser({ valueMin, valueMax }));
   }, [valueMin, valueMax, dispatch]);
-
   return (
     <section className={styles.userList}>
       <form className={styles.form} action="submit">
@@ -63,6 +60,15 @@ function UserList() {
           </div>
         </label>
       </form>
+      <button
+        className={styles.button}
+        onClick={() => (value ? setValue(false) : setValue(true))}
+      >
+        add new User
+      </button>
+      <div className={value ? styles.shown : styles.hidden}>
+        <NewUser />
+      </div>
       <table className={styles.table}>
         <thead className={styles.thead}>
           <tr className={styles.tr}>

@@ -1,10 +1,11 @@
 import { createSlice } from '@reduxjs/toolkit';
 
-import { TUser, usersMock } from '../services/constants';
+import { usersMock } from '../services/constants';
+import { TUser } from '../services/types';
 
 type State = {
   users: TUser[];
-  filteredUsers: TUser[] | never[];
+  filteredUsers: TUser[];
 };
 
 const initialState: State = {
@@ -16,8 +17,19 @@ const userSlice = createSlice({
   name: 'users',
   initialState,
   reducers: {
-    addUser(state) {
-      state.users.push({ name: 'name', surname: 'surname', age: 16, email: '' });
+    addUser(state, action) {
+      state.users.push({
+        name: action.payload.name,
+        surname: action.payload.surname,
+        age: Number(action.payload.age),
+        email: action.payload.email,
+      });
+      state.filteredUsers.push({
+        name: action.payload.name,
+        surname: action.payload.surname,
+        age: Number(action.payload.age),
+        email: action.payload.email,
+      });
     },
     filterUser(state, action) {
       return {
@@ -36,8 +48,8 @@ const userSlice = createSlice({
           if (action.payload.valueMin !== '' && action.payload.valueMax === '') {
             return user.age >= Number(action.payload.valueMin);
           }
-          if (action.payload.valueMin !== '' && action.payload.valueMax !== '') {
-            return true;
+          if (action.payload.valueMin === '' && action.payload.valueMax === '') {
+            return user;
           }
         }),
       };
