@@ -1,11 +1,12 @@
+import Header from '../Header/Header';
 import UserList from '../UserList/UserList';
 
 function App() {
   return (
-    <div className="App">
-      <h1>Users</h1>
+    <>
+      <Header />
       <UserList />
-    </div>
+    </>
   );
 }
 
